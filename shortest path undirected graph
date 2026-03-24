@@ -1,0 +1,19 @@
+class Solution:
+    def shortestPath(self, V, edges, src):
+        # code here
+        adj = [[] for _ in range(V)]
+        for u, v in edges:
+            adj[u].append(v)
+            adj[v].append(u)
+        dist = [-1] * V
+        dist[src] = 0
+        queue = [src]
+        front = 0
+        while front < len(queue):
+            node = queue[front]
+            front += 1
+            for nei in adj[node]:
+                if dist[nei] ==-1:
+                    dist[nei] = dist[node] + 1
+                    queue.append(nei)
+        return dist
